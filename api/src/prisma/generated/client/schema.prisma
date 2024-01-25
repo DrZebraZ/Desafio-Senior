@@ -15,7 +15,7 @@ model User {
   id       String    @id @unique
   username String    @unique
   password String
-  roles    String    @default("user")
+  roles    String    @default("requester")
   Request  Request[]
 
   created_at DateTime  @default(now())
@@ -24,12 +24,15 @@ model User {
 }
 
 model Request {
-  id          String     @id @unique
+  id          String @id @unique
   user_id     String
+  name        String
   description String
   price       String
-  user        User       @relation(fields: [user_id], references: [id])
-  Response    Response[]
+  response_id String
+
+  User     User     @relation(fields: [user_id], references: [id])
+  Response Response @relation(fields: [response_id], references: [id])
 
   created_at DateTime  @default(now())
   updated_at DateTime?
@@ -38,13 +41,13 @@ model Request {
 
 model Response {
   id            String  @id @unique
-  request_id    String
+  request_id    String  @unique
   respondent_id String?
-  confirmed     String  @default("awaiting")
+  status        String  @default("awaiting")
   observation   String?
-  request       Request @relation(fields: [request_id], references: [id])
 
   created_at DateTime  @default(now())
   updated_at DateTime?
   deleted_at DateTime?
+  Request    Request[]
 }

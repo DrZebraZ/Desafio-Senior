@@ -1050,35 +1050,35 @@ export namespace Prisma {
 
 
   /**
-   * Count Type RequestCountOutputType
+   * Count Type ResponseCountOutputType
    */
 
-  export type RequestCountOutputType = {
-    Response: number
+  export type ResponseCountOutputType = {
+    Request: number
   }
 
-  export type RequestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Response?: boolean | RequestCountOutputTypeCountResponseArgs
+  export type ResponseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Request?: boolean | ResponseCountOutputTypeCountRequestArgs
   }
 
   // Custom InputTypes
 
   /**
-   * RequestCountOutputType without action
+   * ResponseCountOutputType without action
    */
-  export type RequestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResponseCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the RequestCountOutputType
+     * Select specific fields to fetch from the ResponseCountOutputType
      */
-    select?: RequestCountOutputTypeSelect<ExtArgs> | null
+    select?: ResponseCountOutputTypeSelect<ExtArgs> | null
   }
 
 
   /**
-   * RequestCountOutputType without action
+   * ResponseCountOutputType without action
    */
-  export type RequestCountOutputTypeCountResponseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ResponseWhereInput
+  export type ResponseCountOutputTypeCountRequestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RequestWhereInput
   }
 
 
@@ -2062,8 +2062,10 @@ export namespace Prisma {
   export type RequestMinAggregateOutputType = {
     id: string | null
     user_id: string | null
+    name: string | null
     description: string | null
     price: string | null
+    response_id: string | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -2072,8 +2074,10 @@ export namespace Prisma {
   export type RequestMaxAggregateOutputType = {
     id: string | null
     user_id: string | null
+    name: string | null
     description: string | null
     price: string | null
+    response_id: string | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -2082,8 +2086,10 @@ export namespace Prisma {
   export type RequestCountAggregateOutputType = {
     id: number
     user_id: number
+    name: number
     description: number
     price: number
+    response_id: number
     created_at: number
     updated_at: number
     deleted_at: number
@@ -2094,8 +2100,10 @@ export namespace Prisma {
   export type RequestMinAggregateInputType = {
     id?: true
     user_id?: true
+    name?: true
     description?: true
     price?: true
+    response_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -2104,8 +2112,10 @@ export namespace Prisma {
   export type RequestMaxAggregateInputType = {
     id?: true
     user_id?: true
+    name?: true
     description?: true
     price?: true
+    response_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -2114,8 +2124,10 @@ export namespace Prisma {
   export type RequestCountAggregateInputType = {
     id?: true
     user_id?: true
+    name?: true
     description?: true
     price?: true
+    response_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -2197,8 +2209,10 @@ export namespace Prisma {
   export type RequestGroupByOutputType = {
     id: string
     user_id: string
+    name: string
     description: string
     price: string
+    response_id: string
     created_at: Date
     updated_at: Date | null
     deleted_at: Date | null
@@ -2224,44 +2238,48 @@ export namespace Prisma {
   export type RequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
+    name?: boolean
     description?: boolean
     price?: boolean
+    response_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    Response?: boolean | Request$ResponseArgs<ExtArgs>
-    _count?: boolean | RequestCountOutputTypeDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Response?: boolean | ResponseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["request"]>
 
   export type RequestSelectScalar = {
     id?: boolean
     user_id?: boolean
+    name?: boolean
     description?: boolean
     price?: boolean
+    response_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
   }
 
   export type RequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    Response?: boolean | Request$ResponseArgs<ExtArgs>
-    _count?: boolean | RequestCountOutputTypeDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+    Response?: boolean | ResponseDefaultArgs<ExtArgs>
   }
 
 
   export type $RequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Request"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      Response: Prisma.$ResponsePayload<ExtArgs>[]
+      User: Prisma.$UserPayload<ExtArgs>
+      Response: Prisma.$ResponsePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
+      name: string
       description: string
       price: string
+      response_id: string
       created_at: Date
       updated_at: Date | null
       deleted_at: Date | null
@@ -2630,9 +2648,9 @@ export namespace Prisma {
   export interface Prisma__RequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    Response<T extends Request$ResponseArgs<ExtArgs> = {}>(args?: Subset<T, Request$ResponseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResponsePayload<ExtArgs>, T, 'findMany'> | Null>;
+    Response<T extends ResponseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ResponseDefaultArgs<ExtArgs>>): Prisma__ResponseClient<$Result.GetResult<Prisma.$ResponsePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2664,8 +2682,10 @@ export namespace Prisma {
   interface RequestFieldRefs {
     readonly id: FieldRef<"Request", 'String'>
     readonly user_id: FieldRef<"Request", 'String'>
+    readonly name: FieldRef<"Request", 'String'>
     readonly description: FieldRef<"Request", 'String'>
     readonly price: FieldRef<"Request", 'String'>
+    readonly response_id: FieldRef<"Request", 'String'>
     readonly created_at: FieldRef<"Request", 'DateTime'>
     readonly updated_at: FieldRef<"Request", 'DateTime'>
     readonly deleted_at: FieldRef<"Request", 'DateTime'>
@@ -2980,27 +3000,6 @@ export namespace Prisma {
 
 
   /**
-   * Request.Response
-   */
-  export type Request$ResponseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Response
-     */
-    select?: ResponseSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: ResponseInclude<ExtArgs> | null
-    where?: ResponseWhereInput
-    orderBy?: ResponseOrderByWithRelationInput | ResponseOrderByWithRelationInput[]
-    cursor?: ResponseWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ResponseScalarFieldEnum | ResponseScalarFieldEnum[]
-  }
-
-
-  /**
    * Request without action
    */
   export type RequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3030,7 +3029,7 @@ export namespace Prisma {
     id: string | null
     request_id: string | null
     respondent_id: string | null
-    confirmed: string | null
+    status: string | null
     observation: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -3041,7 +3040,7 @@ export namespace Prisma {
     id: string | null
     request_id: string | null
     respondent_id: string | null
-    confirmed: string | null
+    status: string | null
     observation: string | null
     created_at: Date | null
     updated_at: Date | null
@@ -3052,7 +3051,7 @@ export namespace Prisma {
     id: number
     request_id: number
     respondent_id: number
-    confirmed: number
+    status: number
     observation: number
     created_at: number
     updated_at: number
@@ -3065,7 +3064,7 @@ export namespace Prisma {
     id?: true
     request_id?: true
     respondent_id?: true
-    confirmed?: true
+    status?: true
     observation?: true
     created_at?: true
     updated_at?: true
@@ -3076,7 +3075,7 @@ export namespace Prisma {
     id?: true
     request_id?: true
     respondent_id?: true
-    confirmed?: true
+    status?: true
     observation?: true
     created_at?: true
     updated_at?: true
@@ -3087,7 +3086,7 @@ export namespace Prisma {
     id?: true
     request_id?: true
     respondent_id?: true
-    confirmed?: true
+    status?: true
     observation?: true
     created_at?: true
     updated_at?: true
@@ -3171,7 +3170,7 @@ export namespace Prisma {
     id: string
     request_id: string
     respondent_id: string | null
-    confirmed: string
+    status: string
     observation: string | null
     created_at: Date
     updated_at: Date | null
@@ -3199,19 +3198,20 @@ export namespace Prisma {
     id?: boolean
     request_id?: boolean
     respondent_id?: boolean
-    confirmed?: boolean
+    status?: boolean
     observation?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
-    request?: boolean | RequestDefaultArgs<ExtArgs>
+    Request?: boolean | Response$RequestArgs<ExtArgs>
+    _count?: boolean | ResponseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["response"]>
 
   export type ResponseSelectScalar = {
     id?: boolean
     request_id?: boolean
     respondent_id?: boolean
-    confirmed?: boolean
+    status?: boolean
     observation?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -3219,20 +3219,21 @@ export namespace Prisma {
   }
 
   export type ResponseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    request?: boolean | RequestDefaultArgs<ExtArgs>
+    Request?: boolean | Response$RequestArgs<ExtArgs>
+    _count?: boolean | ResponseCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
   export type $ResponsePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Response"
     objects: {
-      request: Prisma.$RequestPayload<ExtArgs>
+      Request: Prisma.$RequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       request_id: string
       respondent_id: string | null
-      confirmed: string
+      status: string
       observation: string | null
       created_at: Date
       updated_at: Date | null
@@ -3602,7 +3603,7 @@ export namespace Prisma {
   export interface Prisma__ResponseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    request<T extends RequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RequestDefaultArgs<ExtArgs>>): Prisma__RequestClient<$Result.GetResult<Prisma.$RequestPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+    Request<T extends Response$RequestArgs<ExtArgs> = {}>(args?: Subset<T, Response$RequestArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3635,7 +3636,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Response", 'String'>
     readonly request_id: FieldRef<"Response", 'String'>
     readonly respondent_id: FieldRef<"Response", 'String'>
-    readonly confirmed: FieldRef<"Response", 'String'>
+    readonly status: FieldRef<"Response", 'String'>
     readonly observation: FieldRef<"Response", 'String'>
     readonly created_at: FieldRef<"Response", 'DateTime'>
     readonly updated_at: FieldRef<"Response", 'DateTime'>
@@ -3951,6 +3952,27 @@ export namespace Prisma {
 
 
   /**
+   * Response.Request
+   */
+  export type Response$RequestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Request
+     */
+    select?: RequestSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: RequestInclude<ExtArgs> | null
+    where?: RequestWhereInput
+    orderBy?: RequestOrderByWithRelationInput | RequestOrderByWithRelationInput[]
+    cursor?: RequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RequestScalarFieldEnum | RequestScalarFieldEnum[]
+  }
+
+
+  /**
    * Response without action
    */
   export type ResponseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3997,8 +4019,10 @@ export namespace Prisma {
   export const RequestScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
+    name: 'name',
     description: 'description',
     price: 'price',
+    response_id: 'response_id',
     created_at: 'created_at',
     updated_at: 'updated_at',
     deleted_at: 'deleted_at'
@@ -4011,7 +4035,7 @@ export namespace Prisma {
     id: 'id',
     request_id: 'request_id',
     respondent_id: 'respondent_id',
-    confirmed: 'confirmed',
+    status: 'status',
     observation: 'observation',
     created_at: 'created_at',
     updated_at: 'updated_at',
@@ -4137,25 +4161,29 @@ export namespace Prisma {
     NOT?: RequestWhereInput | RequestWhereInput[]
     id?: StringFilter<"Request"> | string
     user_id?: StringFilter<"Request"> | string
+    name?: StringFilter<"Request"> | string
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
+    response_id?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
     updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
     deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    Response?: ResponseListRelationFilter
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Response?: XOR<ResponseRelationFilter, ResponseWhereInput>
   }
 
   export type RequestOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
+    name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    response_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     deleted_at?: SortOrderInput | SortOrder
-    user?: UserOrderByWithRelationInput
-    Response?: ResponseOrderByRelationAggregateInput
+    User?: UserOrderByWithRelationInput
+    Response?: ResponseOrderByWithRelationInput
   }
 
   export type RequestWhereUniqueInput = Prisma.AtLeast<{
@@ -4164,20 +4192,24 @@ export namespace Prisma {
     OR?: RequestWhereInput[]
     NOT?: RequestWhereInput | RequestWhereInput[]
     user_id?: StringFilter<"Request"> | string
+    name?: StringFilter<"Request"> | string
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
+    response_id?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
     updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
     deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    Response?: ResponseListRelationFilter
+    User?: XOR<UserRelationFilter, UserWhereInput>
+    Response?: XOR<ResponseRelationFilter, ResponseWhereInput>
   }, "id" | "id">
 
   export type RequestOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
+    name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    response_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     deleted_at?: SortOrderInput | SortOrder
@@ -4192,8 +4224,10 @@ export namespace Prisma {
     NOT?: RequestScalarWhereWithAggregatesInput | RequestScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Request"> | string
     user_id?: StringWithAggregatesFilter<"Request"> | string
+    name?: StringWithAggregatesFilter<"Request"> | string
     description?: StringWithAggregatesFilter<"Request"> | string
     price?: StringWithAggregatesFilter<"Request"> | string
+    response_id?: StringWithAggregatesFilter<"Request"> | string
     created_at?: DateTimeWithAggregatesFilter<"Request"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"Request"> | Date | string | null
     deleted_at?: DateTimeNullableWithAggregatesFilter<"Request"> | Date | string | null
@@ -4206,46 +4240,46 @@ export namespace Prisma {
     id?: StringFilter<"Response"> | string
     request_id?: StringFilter<"Response"> | string
     respondent_id?: StringNullableFilter<"Response"> | string | null
-    confirmed?: StringFilter<"Response"> | string
+    status?: StringFilter<"Response"> | string
     observation?: StringNullableFilter<"Response"> | string | null
     created_at?: DateTimeFilter<"Response"> | Date | string
     updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
     deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
-    request?: XOR<RequestRelationFilter, RequestWhereInput>
+    Request?: RequestListRelationFilter
   }
 
   export type ResponseOrderByWithRelationInput = {
     id?: SortOrder
     request_id?: SortOrder
     respondent_id?: SortOrderInput | SortOrder
-    confirmed?: SortOrder
+    status?: SortOrder
     observation?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
     deleted_at?: SortOrderInput | SortOrder
-    request?: RequestOrderByWithRelationInput
+    Request?: RequestOrderByRelationAggregateInput
   }
 
   export type ResponseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    request_id?: string
     AND?: ResponseWhereInput | ResponseWhereInput[]
     OR?: ResponseWhereInput[]
     NOT?: ResponseWhereInput | ResponseWhereInput[]
-    request_id?: StringFilter<"Response"> | string
     respondent_id?: StringNullableFilter<"Response"> | string | null
-    confirmed?: StringFilter<"Response"> | string
+    status?: StringFilter<"Response"> | string
     observation?: StringNullableFilter<"Response"> | string | null
     created_at?: DateTimeFilter<"Response"> | Date | string
     updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
     deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
-    request?: XOR<RequestRelationFilter, RequestWhereInput>
-  }, "id" | "id">
+    Request?: RequestListRelationFilter
+  }, "id" | "id" | "request_id">
 
   export type ResponseOrderByWithAggregationInput = {
     id?: SortOrder
     request_id?: SortOrder
     respondent_id?: SortOrderInput | SortOrder
-    confirmed?: SortOrder
+    status?: SortOrder
     observation?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrderInput | SortOrder
@@ -4262,7 +4296,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Response"> | string
     request_id?: StringWithAggregatesFilter<"Response"> | string
     respondent_id?: StringNullableWithAggregatesFilter<"Response"> | string | null
-    confirmed?: StringWithAggregatesFilter<"Response"> | string
+    status?: StringWithAggregatesFilter<"Response"> | string
     observation?: StringNullableWithAggregatesFilter<"Response"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Response"> | Date | string
     updated_at?: DateTimeNullableWithAggregatesFilter<"Response"> | Date | string | null
@@ -4345,53 +4379,59 @@ export namespace Prisma {
 
   export type RequestCreateInput = {
     id: string
+    name: string
     description: string
     price: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    user: UserCreateNestedOneWithoutRequestInput
-    Response?: ResponseCreateNestedManyWithoutRequestInput
+    User: UserCreateNestedOneWithoutRequestInput
+    Response: ResponseCreateNestedOneWithoutRequestInput
   }
 
   export type RequestUncheckedCreateInput = {
     id: string
     user_id: string
+    name: string
     description: string
     price: string
+    response_id: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    Response?: ResponseUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type RequestUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneRequiredWithoutRequestNestedInput
-    Response?: ResponseUpdateManyWithoutRequestNestedInput
+    User?: UserUpdateOneRequiredWithoutRequestNestedInput
+    Response?: ResponseUpdateOneRequiredWithoutRequestNestedInput
   }
 
   export type RequestUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    response_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Response?: ResponseUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type RequestCreateManyInput = {
     id: string
     user_id: string
+    name: string
     description: string
     price: string
+    response_id: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
@@ -4399,6 +4439,7 @@ export namespace Prisma {
 
   export type RequestUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4409,8 +4450,10 @@ export namespace Prisma {
   export type RequestUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    response_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4418,53 +4461,57 @@ export namespace Prisma {
 
   export type ResponseCreateInput = {
     id: string
+    request_id: string
     respondent_id?: string | null
-    confirmed?: string
+    status?: string
     observation?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    request: RequestCreateNestedOneWithoutResponseInput
+    Request?: RequestCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUncheckedCreateInput = {
     id: string
     request_id: string
     respondent_id?: string | null
-    confirmed?: string
+    status?: string
     observation?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
+    Request?: RequestUncheckedCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    request_id?: StringFieldUpdateOperationsInput | string
     respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    request?: RequestUpdateOneRequiredWithoutResponseNestedInput
+    Request?: RequestUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     request_id?: StringFieldUpdateOperationsInput | string
     respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Request?: RequestUncheckedUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseCreateManyInput = {
     id: string
     request_id: string
     respondent_id?: string | null
-    confirmed?: string
+    status?: string
     observation?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -4473,8 +4520,9 @@ export namespace Prisma {
 
   export type ResponseUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    request_id?: StringFieldUpdateOperationsInput | string
     respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4485,7 +4533,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     request_id?: StringFieldUpdateOperationsInput | string
     respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -4623,21 +4671,18 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type ResponseListRelationFilter = {
-    every?: ResponseWhereInput
-    some?: ResponseWhereInput
-    none?: ResponseWhereInput
-  }
-
-  export type ResponseOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type ResponseRelationFilter = {
+    is?: ResponseWhereInput
+    isNot?: ResponseWhereInput
   }
 
   export type RequestCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    response_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -4646,8 +4691,10 @@ export namespace Prisma {
   export type RequestMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    response_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -4656,8 +4703,10 @@ export namespace Prisma {
   export type RequestMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
+    name?: SortOrder
     description?: SortOrder
     price?: SortOrder
+    response_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -4677,16 +4726,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type RequestRelationFilter = {
-    is?: RequestWhereInput
-    isNot?: RequestWhereInput
-  }
-
   export type ResponseCountOrderByAggregateInput = {
     id?: SortOrder
     request_id?: SortOrder
     respondent_id?: SortOrder
-    confirmed?: SortOrder
+    status?: SortOrder
     observation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -4697,7 +4741,7 @@ export namespace Prisma {
     id?: SortOrder
     request_id?: SortOrder
     respondent_id?: SortOrder
-    confirmed?: SortOrder
+    status?: SortOrder
     observation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -4708,7 +4752,7 @@ export namespace Prisma {
     id?: SortOrder
     request_id?: SortOrder
     respondent_id?: SortOrder
-    confirmed?: SortOrder
+    status?: SortOrder
     observation?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -4792,18 +4836,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type ResponseCreateNestedManyWithoutRequestInput = {
-    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput> | ResponseCreateWithoutRequestInput[] | ResponseUncheckedCreateWithoutRequestInput[]
-    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput | ResponseCreateOrConnectWithoutRequestInput[]
-    createMany?: ResponseCreateManyRequestInputEnvelope
-    connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-  }
-
-  export type ResponseUncheckedCreateNestedManyWithoutRequestInput = {
-    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput> | ResponseCreateWithoutRequestInput[] | ResponseUncheckedCreateWithoutRequestInput[]
-    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput | ResponseCreateOrConnectWithoutRequestInput[]
-    createMany?: ResponseCreateManyRequestInputEnvelope
-    connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
+  export type ResponseCreateNestedOneWithoutRequestInput = {
+    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput>
+    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput
+    connect?: ResponseWhereUniqueInput
   }
 
   export type UserUpdateOneRequiredWithoutRequestNestedInput = {
@@ -4814,50 +4850,58 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRequestInput, UserUpdateWithoutRequestInput>, UserUncheckedUpdateWithoutRequestInput>
   }
 
-  export type ResponseUpdateManyWithoutRequestNestedInput = {
-    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput> | ResponseCreateWithoutRequestInput[] | ResponseUncheckedCreateWithoutRequestInput[]
-    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput | ResponseCreateOrConnectWithoutRequestInput[]
-    upsert?: ResponseUpsertWithWhereUniqueWithoutRequestInput | ResponseUpsertWithWhereUniqueWithoutRequestInput[]
-    createMany?: ResponseCreateManyRequestInputEnvelope
-    set?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    disconnect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    delete?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    update?: ResponseUpdateWithWhereUniqueWithoutRequestInput | ResponseUpdateWithWhereUniqueWithoutRequestInput[]
-    updateMany?: ResponseUpdateManyWithWhereWithoutRequestInput | ResponseUpdateManyWithWhereWithoutRequestInput[]
-    deleteMany?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
+  export type ResponseUpdateOneRequiredWithoutRequestNestedInput = {
+    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput>
+    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput
+    upsert?: ResponseUpsertWithoutRequestInput
+    connect?: ResponseWhereUniqueInput
+    update?: XOR<XOR<ResponseUpdateToOneWithWhereWithoutRequestInput, ResponseUpdateWithoutRequestInput>, ResponseUncheckedUpdateWithoutRequestInput>
   }
 
-  export type ResponseUncheckedUpdateManyWithoutRequestNestedInput = {
-    create?: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput> | ResponseCreateWithoutRequestInput[] | ResponseUncheckedCreateWithoutRequestInput[]
-    connectOrCreate?: ResponseCreateOrConnectWithoutRequestInput | ResponseCreateOrConnectWithoutRequestInput[]
-    upsert?: ResponseUpsertWithWhereUniqueWithoutRequestInput | ResponseUpsertWithWhereUniqueWithoutRequestInput[]
-    createMany?: ResponseCreateManyRequestInputEnvelope
-    set?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    disconnect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    delete?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
-    update?: ResponseUpdateWithWhereUniqueWithoutRequestInput | ResponseUpdateWithWhereUniqueWithoutRequestInput[]
-    updateMany?: ResponseUpdateManyWithWhereWithoutRequestInput | ResponseUpdateManyWithWhereWithoutRequestInput[]
-    deleteMany?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
+  export type RequestCreateNestedManyWithoutResponseInput = {
+    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput> | RequestCreateWithoutResponseInput[] | RequestUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput | RequestCreateOrConnectWithoutResponseInput[]
+    createMany?: RequestCreateManyResponseInputEnvelope
+    connect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
   }
 
-  export type RequestCreateNestedOneWithoutResponseInput = {
-    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
-    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput
-    connect?: RequestWhereUniqueInput
+  export type RequestUncheckedCreateNestedManyWithoutResponseInput = {
+    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput> | RequestCreateWithoutResponseInput[] | RequestUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput | RequestCreateOrConnectWithoutResponseInput[]
+    createMany?: RequestCreateManyResponseInputEnvelope
+    connect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type RequestUpdateOneRequiredWithoutResponseNestedInput = {
-    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
-    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput
-    upsert?: RequestUpsertWithoutResponseInput
-    connect?: RequestWhereUniqueInput
-    update?: XOR<XOR<RequestUpdateToOneWithWhereWithoutResponseInput, RequestUpdateWithoutResponseInput>, RequestUncheckedUpdateWithoutResponseInput>
+  export type RequestUpdateManyWithoutResponseNestedInput = {
+    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput> | RequestCreateWithoutResponseInput[] | RequestUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput | RequestCreateOrConnectWithoutResponseInput[]
+    upsert?: RequestUpsertWithWhereUniqueWithoutResponseInput | RequestUpsertWithWhereUniqueWithoutResponseInput[]
+    createMany?: RequestCreateManyResponseInputEnvelope
+    set?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    disconnect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    delete?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    connect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    update?: RequestUpdateWithWhereUniqueWithoutResponseInput | RequestUpdateWithWhereUniqueWithoutResponseInput[]
+    updateMany?: RequestUpdateManyWithWhereWithoutResponseInput | RequestUpdateManyWithWhereWithoutResponseInput[]
+    deleteMany?: RequestScalarWhereInput | RequestScalarWhereInput[]
+  }
+
+  export type RequestUncheckedUpdateManyWithoutResponseNestedInput = {
+    create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput> | RequestCreateWithoutResponseInput[] | RequestUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RequestCreateOrConnectWithoutResponseInput | RequestCreateOrConnectWithoutResponseInput[]
+    upsert?: RequestUpsertWithWhereUniqueWithoutResponseInput | RequestUpsertWithWhereUniqueWithoutResponseInput[]
+    createMany?: RequestCreateManyResponseInputEnvelope
+    set?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    disconnect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    delete?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    connect?: RequestWhereUniqueInput | RequestWhereUniqueInput[]
+    update?: RequestUpdateWithWhereUniqueWithoutResponseInput | RequestUpdateWithWhereUniqueWithoutResponseInput[]
+    updateMany?: RequestUpdateManyWithWhereWithoutResponseInput | RequestUpdateManyWithWhereWithoutResponseInput[]
+    deleteMany?: RequestScalarWhereInput | RequestScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4996,22 +5040,24 @@ export namespace Prisma {
 
   export type RequestCreateWithoutUserInput = {
     id: string
+    name: string
     description: string
     price: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    Response?: ResponseCreateNestedManyWithoutRequestInput
+    Response: ResponseCreateNestedOneWithoutRequestInput
   }
 
   export type RequestUncheckedCreateWithoutUserInput = {
     id: string
+    name: string
     description: string
     price: string
+    response_id: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    Response?: ResponseUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type RequestCreateOrConnectWithoutUserInput = {
@@ -5045,8 +5091,10 @@ export namespace Prisma {
     NOT?: RequestScalarWhereInput | RequestScalarWhereInput[]
     id?: StringFilter<"Request"> | string
     user_id?: StringFilter<"Request"> | string
+    name?: StringFilter<"Request"> | string
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
+    response_id?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
     updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
     deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
@@ -5079,8 +5127,9 @@ export namespace Prisma {
 
   export type ResponseCreateWithoutRequestInput = {
     id: string
+    request_id: string
     respondent_id?: string | null
-    confirmed?: string
+    status?: string
     observation?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -5089,8 +5138,9 @@ export namespace Prisma {
 
   export type ResponseUncheckedCreateWithoutRequestInput = {
     id: string
+    request_id: string
     respondent_id?: string | null
-    confirmed?: string
+    status?: string
     observation?: string | null
     created_at?: Date | string
     updated_at?: Date | string | null
@@ -5100,10 +5150,6 @@ export namespace Prisma {
   export type ResponseCreateOrConnectWithoutRequestInput = {
     where: ResponseWhereUniqueInput
     create: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput>
-  }
-
-  export type ResponseCreateManyRequestInputEnvelope = {
-    data: ResponseCreateManyRequestInput | ResponseCreateManyRequestInput[]
   }
 
   export type UserUpsertWithoutRequestInput = {
@@ -5137,49 +5183,54 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ResponseUpsertWithWhereUniqueWithoutRequestInput = {
-    where: ResponseWhereUniqueInput
+  export type ResponseUpsertWithoutRequestInput = {
     update: XOR<ResponseUpdateWithoutRequestInput, ResponseUncheckedUpdateWithoutRequestInput>
     create: XOR<ResponseCreateWithoutRequestInput, ResponseUncheckedCreateWithoutRequestInput>
+    where?: ResponseWhereInput
   }
 
-  export type ResponseUpdateWithWhereUniqueWithoutRequestInput = {
-    where: ResponseWhereUniqueInput
+  export type ResponseUpdateToOneWithWhereWithoutRequestInput = {
+    where?: ResponseWhereInput
     data: XOR<ResponseUpdateWithoutRequestInput, ResponseUncheckedUpdateWithoutRequestInput>
   }
 
-  export type ResponseUpdateManyWithWhereWithoutRequestInput = {
-    where: ResponseScalarWhereInput
-    data: XOR<ResponseUpdateManyMutationInput, ResponseUncheckedUpdateManyWithoutRequestInput>
+  export type ResponseUpdateWithoutRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    request_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ResponseScalarWhereInput = {
-    AND?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
-    OR?: ResponseScalarWhereInput[]
-    NOT?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
-    id?: StringFilter<"Response"> | string
-    request_id?: StringFilter<"Response"> | string
-    respondent_id?: StringNullableFilter<"Response"> | string | null
-    confirmed?: StringFilter<"Response"> | string
-    observation?: StringNullableFilter<"Response"> | string | null
-    created_at?: DateTimeFilter<"Response"> | Date | string
-    updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
-    deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
+  export type ResponseUncheckedUpdateWithoutRequestInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    request_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RequestCreateWithoutResponseInput = {
     id: string
+    name: string
     description: string
     price: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
-    user: UserCreateNestedOneWithoutRequestInput
+    User: UserCreateNestedOneWithoutRequestInput
   }
 
   export type RequestUncheckedCreateWithoutResponseInput = {
     id: string
     user_id: string
+    name: string
     description: string
     price: string
     created_at?: Date | string
@@ -5192,41 +5243,32 @@ export namespace Prisma {
     create: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
   }
 
-  export type RequestUpsertWithoutResponseInput = {
-    update: XOR<RequestUpdateWithoutResponseInput, RequestUncheckedUpdateWithoutResponseInput>
-    create: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
-    where?: RequestWhereInput
+  export type RequestCreateManyResponseInputEnvelope = {
+    data: RequestCreateManyResponseInput | RequestCreateManyResponseInput[]
   }
 
-  export type RequestUpdateToOneWithWhereWithoutResponseInput = {
-    where?: RequestWhereInput
+  export type RequestUpsertWithWhereUniqueWithoutResponseInput = {
+    where: RequestWhereUniqueInput
+    update: XOR<RequestUpdateWithoutResponseInput, RequestUncheckedUpdateWithoutResponseInput>
+    create: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
+  }
+
+  export type RequestUpdateWithWhereUniqueWithoutResponseInput = {
+    where: RequestWhereUniqueInput
     data: XOR<RequestUpdateWithoutResponseInput, RequestUncheckedUpdateWithoutResponseInput>
   }
 
-  export type RequestUpdateWithoutResponseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user?: UserUpdateOneRequiredWithoutRequestNestedInput
-  }
-
-  export type RequestUncheckedUpdateWithoutResponseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_id?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    price?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  export type RequestUpdateManyWithWhereWithoutResponseInput = {
+    where: RequestScalarWhereInput
+    data: XOR<RequestUpdateManyMutationInput, RequestUncheckedUpdateManyWithoutResponseInput>
   }
 
   export type RequestCreateManyUserInput = {
     id: string
+    name: string
     description: string
     price: string
+    response_id: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
@@ -5234,68 +5276,76 @@ export namespace Prisma {
 
   export type RequestUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Response?: ResponseUpdateManyWithoutRequestNestedInput
+    Response?: ResponseUpdateOneRequiredWithoutRequestNestedInput
   }
 
   export type RequestUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    response_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Response?: ResponseUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type RequestUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
+    response_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ResponseCreateManyRequestInput = {
+  export type RequestCreateManyResponseInput = {
     id: string
-    respondent_id?: string | null
-    confirmed?: string
-    observation?: string | null
+    user_id: string
+    name: string
+    description: string
+    price: string
     created_at?: Date | string
     updated_at?: Date | string | null
     deleted_at?: Date | string | null
   }
 
-  export type ResponseUpdateWithoutRequestInput = {
+  export type RequestUpdateWithoutResponseInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    User?: UserUpdateOneRequiredWithoutRequestNestedInput
+  }
+
+  export type RequestUncheckedUpdateWithoutResponseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ResponseUncheckedUpdateWithoutRequestInput = {
+  export type RequestUncheckedUpdateManyWithoutResponseInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type ResponseUncheckedUpdateManyWithoutRequestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
-    confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -5311,9 +5361,9 @@ export namespace Prisma {
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use RequestCountOutputTypeDefaultArgs instead
+     * @deprecated Use ResponseCountOutputTypeDefaultArgs instead
      */
-    export type RequestCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RequestCountOutputTypeDefaultArgs<ExtArgs>
+    export type ResponseCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ResponseCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */

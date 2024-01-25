@@ -8,7 +8,7 @@ import { UserRepository } from "../user.repository.model";
 export class UserCreateCase{
   constructor(private repository: UserRepository){}
 
-  async execute({username, password}: createUserBodyType, resultValidation: ResultValidation):Promise<void>{
+  async execute({username, password, roles}: createUserBodyType, resultValidation: ResultValidation):Promise<void>{
     await this.repository.findByUsername(username, resultValidation)
     if (resultValidation.hasError()){
       return
@@ -25,6 +25,7 @@ export class UserCreateCase{
       id: randomUUID(),
       username,
       password: passwordHashed,
+      roles,
       created_at: new Date()
     })
     

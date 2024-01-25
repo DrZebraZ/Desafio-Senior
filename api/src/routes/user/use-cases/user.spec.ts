@@ -4,15 +4,13 @@
 // import { createUserBodyType, insertUserDatabaseBodyType } from '../user.schemas'
 // import { UserRepository } from '../user.repository.model'
 // import { compare, hash } from 'bcryptjs'
-// import { Prisma } from '@prisma/client'
+// import { Prisma } from '@/prisma/generated/client'
 // import { ERROR_TYPES } from '@/errors/ErrorTypes'
 // import { UserCreateCase } from './user.create.case'
 // import { UserAuthenticateCase } from './user.authenticate.case'
 
-
-
 // class FakeRepository implements UserRepository{
-//   async findByEmail(email: string, resultValidation: ResultValidation): Promise<void> {
+//   async findByUsername(username: string, resultValidation: ResultValidation): Promise<void> {
 //     try{
 //       throw new Error('STOP')
 //     }catch(err){

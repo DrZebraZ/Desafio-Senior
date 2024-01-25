@@ -12,7 +12,8 @@ const exp = z.number()
 
 export const createUserBody = z.object({
   username,
-  password
+  password,
+  roles
 })
 export type createUserBodyType = z.infer<typeof createUserBody>
 
@@ -21,6 +22,7 @@ export const insertUserDatabaseBody = z.object({
   username,
   password,
   created_at,
+  roles
 })
 export type insertUserDatabaseBodyType = z.infer<typeof insertUserDatabaseBody>
 
@@ -40,6 +42,7 @@ export type JWTBodyType = z.infer<typeof JWTBody>
 export const JWTCreationBody = z.object({
   id,
   username,
+  roles,
   exp
 })
 export type JWTCreationBodyType = z.infer<typeof JWTCreationBody>

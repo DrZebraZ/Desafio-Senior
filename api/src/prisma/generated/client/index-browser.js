@@ -121,8 +121,10 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.RequestScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
+  name: 'name',
   description: 'description',
   price: 'price',
+  response_id: 'response_id',
   created_at: 'created_at',
   updated_at: 'updated_at',
   deleted_at: 'deleted_at'
@@ -132,7 +134,7 @@ exports.Prisma.ResponseScalarFieldEnum = {
   id: 'id',
   request_id: 'request_id',
   respondent_id: 'respondent_id',
-  confirmed: 'confirmed',
+  status: 'status',
   observation: 'observation',
   created_at: 'created_at',
   updated_at: 'updated_at',

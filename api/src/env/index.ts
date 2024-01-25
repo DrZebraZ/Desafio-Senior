@@ -5,7 +5,9 @@ const envSchema = z.object({
   DATABASE_URL: z.string(),
   NODE_ENV: z.string(),
   PORT: z.coerce.number().default(3000),
-  JWTKEY: z.string()
+  JWTKEY: z.string(),
+  ADM_USERNAME: z.string().min(5),
+  ADM_PASSWORD: z.string().min(8)
 })
 
 const _env = envSchema.safeParse(process.env)
