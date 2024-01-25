@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  api_nodejs:
+    image: senior:api
+    container_name: senior-nodejs
+    restart: always
+    ports:
+    - "3000:3000"
+    build:
+      context: ./api
+      dockerfile: ./Dockerfile
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    container_name: senior-database
+    restart: always
+    ports:
+    - "1433:1433"
+    environment:
+      SA_PASSWORD: "root"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_DB: "senior"
