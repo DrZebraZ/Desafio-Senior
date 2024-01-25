@@ -4,6 +4,9 @@ import { buildJsonSchemas } from 'fastify-zod'
 const id = z.string().uuid()
 const username = z.string({required_error:"Must provide a valid username"})
 const password = z.string({required_error:"Must provide a password"}).min(8)
+const created_at = z.coerce.date()
+const updated_at = z.coerce.date()
+const deleted_at = z.coerce.date()
 const roles = z.enum(['requester', 'storekeeper', 'admin'])
 const exp = z.number()
 
@@ -16,7 +19,8 @@ export type createUserBodyType = z.infer<typeof createUserBody>
 export const insertUserDatabaseBody = z.object({
   id,
   username,
-  password
+  password,
+  created_at,
 })
 export type insertUserDatabaseBodyType = z.infer<typeof insertUserDatabaseBody>
 

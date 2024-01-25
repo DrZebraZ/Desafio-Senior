@@ -1238,8 +1238,8 @@ export namespace Prisma {
     password: string
     roles: string
     created_at: Date
-    updated_at: Date
-    deleted_at: Date
+    updated_at: Date | null
+    deleted_at: Date | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1298,8 +1298,8 @@ export namespace Prisma {
       password: string
       roles: string
       created_at: Date
-      updated_at: Date
-      deleted_at: Date
+      updated_at: Date | null
+      deleted_at: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2200,8 +2200,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at: Date
-    updated_at: Date
-    deleted_at: Date
+    updated_at: Date | null
+    deleted_at: Date | null
     _count: RequestCountAggregateOutputType | null
     _min: RequestMinAggregateOutputType | null
     _max: RequestMaxAggregateOutputType | null
@@ -2263,8 +2263,8 @@ export namespace Prisma {
       description: string
       price: string
       created_at: Date
-      updated_at: Date
-      deleted_at: Date
+      updated_at: Date | null
+      deleted_at: Date | null
     }, ExtArgs["result"]["request"]>
     composites: {}
   }
@@ -3170,12 +3170,12 @@ export namespace Prisma {
   export type ResponseGroupByOutputType = {
     id: string
     request_id: string
-    respondent_id: string
+    respondent_id: string | null
     confirmed: string
-    observation: string
+    observation: string | null
     created_at: Date
-    updated_at: Date
-    deleted_at: Date
+    updated_at: Date | null
+    deleted_at: Date | null
     _count: ResponseCountAggregateOutputType | null
     _min: ResponseMinAggregateOutputType | null
     _max: ResponseMaxAggregateOutputType | null
@@ -3231,12 +3231,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       request_id: string
-      respondent_id: string
+      respondent_id: string | null
       confirmed: string
-      observation: string
+      observation: string | null
       created_at: Date
-      updated_at: Date
-      deleted_at: Date
+      updated_at: Date | null
+      deleted_at: Date | null
     }, ExtArgs["result"]["response"]>
     composites: {}
   }
@@ -4029,6 +4029,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references 
    */
@@ -4067,8 +4075,8 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     roles?: StringFilter<"User"> | string
     created_at?: DateTimeFilter<"User"> | Date | string
-    updated_at?: DateTimeFilter<"User"> | Date | string
-    deleted_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"User"> | Date | string | null
     Request?: RequestListRelationFilter
   }
 
@@ -4078,8 +4086,8 @@ export namespace Prisma {
     password?: SortOrder
     roles?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     Request?: RequestOrderByRelationAggregateInput
   }
 
@@ -4092,8 +4100,8 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     roles?: StringFilter<"User"> | string
     created_at?: DateTimeFilter<"User"> | Date | string
-    updated_at?: DateTimeFilter<"User"> | Date | string
-    deleted_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeNullableFilter<"User"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"User"> | Date | string | null
     Request?: RequestListRelationFilter
   }, "id" | "id" | "username">
 
@@ -4103,8 +4111,8 @@ export namespace Prisma {
     password?: SortOrder
     roles?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -4119,8 +4127,8 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     roles?: StringWithAggregatesFilter<"User"> | string
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    deleted_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updated_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type RequestWhereInput = {
@@ -4132,8 +4140,8 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
-    updated_at?: DateTimeFilter<"Request"> | Date | string
-    deleted_at?: DateTimeFilter<"Request"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     Response?: ResponseListRelationFilter
   }
@@ -4144,8 +4152,8 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     Response?: ResponseOrderByRelationAggregateInput
   }
@@ -4159,8 +4167,8 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
-    updated_at?: DateTimeFilter<"Request"> | Date | string
-    deleted_at?: DateTimeFilter<"Request"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
     Response?: ResponseListRelationFilter
   }, "id" | "id">
@@ -4171,8 +4179,8 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: RequestCountOrderByAggregateInput
     _max?: RequestMaxOrderByAggregateInput
     _min?: RequestMinOrderByAggregateInput
@@ -4187,8 +4195,8 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Request"> | string
     price?: StringWithAggregatesFilter<"Request"> | string
     created_at?: DateTimeWithAggregatesFilter<"Request"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"Request"> | Date | string
-    deleted_at?: DateTimeWithAggregatesFilter<"Request"> | Date | string
+    updated_at?: DateTimeNullableWithAggregatesFilter<"Request"> | Date | string | null
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Request"> | Date | string | null
   }
 
   export type ResponseWhereInput = {
@@ -4197,24 +4205,24 @@ export namespace Prisma {
     NOT?: ResponseWhereInput | ResponseWhereInput[]
     id?: StringFilter<"Response"> | string
     request_id?: StringFilter<"Response"> | string
-    respondent_id?: StringFilter<"Response"> | string
+    respondent_id?: StringNullableFilter<"Response"> | string | null
     confirmed?: StringFilter<"Response"> | string
-    observation?: StringFilter<"Response"> | string
+    observation?: StringNullableFilter<"Response"> | string | null
     created_at?: DateTimeFilter<"Response"> | Date | string
-    updated_at?: DateTimeFilter<"Response"> | Date | string
-    deleted_at?: DateTimeFilter<"Response"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
     request?: XOR<RequestRelationFilter, RequestWhereInput>
   }
 
   export type ResponseOrderByWithRelationInput = {
     id?: SortOrder
     request_id?: SortOrder
-    respondent_id?: SortOrder
+    respondent_id?: SortOrderInput | SortOrder
     confirmed?: SortOrder
-    observation?: SortOrder
+    observation?: SortOrderInput | SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     request?: RequestOrderByWithRelationInput
   }
 
@@ -4224,24 +4232,24 @@ export namespace Prisma {
     OR?: ResponseWhereInput[]
     NOT?: ResponseWhereInput | ResponseWhereInput[]
     request_id?: StringFilter<"Response"> | string
-    respondent_id?: StringFilter<"Response"> | string
+    respondent_id?: StringNullableFilter<"Response"> | string | null
     confirmed?: StringFilter<"Response"> | string
-    observation?: StringFilter<"Response"> | string
+    observation?: StringNullableFilter<"Response"> | string | null
     created_at?: DateTimeFilter<"Response"> | Date | string
-    updated_at?: DateTimeFilter<"Response"> | Date | string
-    deleted_at?: DateTimeFilter<"Response"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
     request?: XOR<RequestRelationFilter, RequestWhereInput>
   }, "id" | "id">
 
   export type ResponseOrderByWithAggregationInput = {
     id?: SortOrder
     request_id?: SortOrder
-    respondent_id?: SortOrder
+    respondent_id?: SortOrderInput | SortOrder
     confirmed?: SortOrder
-    observation?: SortOrder
+    observation?: SortOrderInput | SortOrder
     created_at?: SortOrder
-    updated_at?: SortOrder
-    deleted_at?: SortOrder
+    updated_at?: SortOrderInput | SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: ResponseCountOrderByAggregateInput
     _max?: ResponseMaxOrderByAggregateInput
     _min?: ResponseMinOrderByAggregateInput
@@ -4253,12 +4261,12 @@ export namespace Prisma {
     NOT?: ResponseScalarWhereWithAggregatesInput | ResponseScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Response"> | string
     request_id?: StringWithAggregatesFilter<"Response"> | string
-    respondent_id?: StringWithAggregatesFilter<"Response"> | string
+    respondent_id?: StringNullableWithAggregatesFilter<"Response"> | string | null
     confirmed?: StringWithAggregatesFilter<"Response"> | string
-    observation?: StringWithAggregatesFilter<"Response"> | string
+    observation?: StringNullableWithAggregatesFilter<"Response"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Response"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"Response"> | Date | string
-    deleted_at?: DateTimeWithAggregatesFilter<"Response"> | Date | string
+    updated_at?: DateTimeNullableWithAggregatesFilter<"Response"> | Date | string | null
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Response"> | Date | string | null
   }
 
   export type UserCreateInput = {
@@ -4267,8 +4275,8 @@ export namespace Prisma {
     password: string
     roles?: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     Request?: RequestCreateNestedManyWithoutUserInput
   }
 
@@ -4278,8 +4286,8 @@ export namespace Prisma {
     password: string
     roles?: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     Request?: RequestUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -4289,8 +4297,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Request?: RequestUpdateManyWithoutUserNestedInput
   }
 
@@ -4300,8 +4308,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Request?: RequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -4311,8 +4319,8 @@ export namespace Prisma {
     password: string
     roles?: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -4321,8 +4329,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4331,8 +4339,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RequestCreateInput = {
@@ -4340,8 +4348,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     user: UserCreateNestedOneWithoutRequestInput
     Response?: ResponseCreateNestedManyWithoutRequestInput
   }
@@ -4352,8 +4360,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     Response?: ResponseUncheckedCreateNestedManyWithoutRequestInput
   }
 
@@ -4362,8 +4370,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRequestNestedInput
     Response?: ResponseUpdateManyWithoutRequestNestedInput
   }
@@ -4374,8 +4382,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Response?: ResponseUncheckedUpdateManyWithoutRequestNestedInput
   }
 
@@ -4385,8 +4393,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type RequestUpdateManyMutationInput = {
@@ -4394,8 +4402,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RequestUncheckedUpdateManyInput = {
@@ -4404,84 +4412,84 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseCreateInput = {
     id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     request: RequestCreateNestedOneWithoutResponseInput
   }
 
   export type ResponseUncheckedCreateInput = {
     id: string
     request_id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type ResponseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     request?: RequestUpdateOneRequiredWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     request_id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseCreateManyInput = {
     id: string
     request_id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type ResponseUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     request_id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4509,10 +4517,26 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type RequestListRelationFilter = {
     every?: RequestWhereInput
     some?: RequestWhereInput
     none?: RequestWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type RequestOrderByRelationAggregateInput = {
@@ -4580,6 +4604,20 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -4625,6 +4663,20 @@ export namespace Prisma {
     deleted_at?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type RequestRelationFilter = {
     is?: RequestWhereInput
     isNot?: RequestWhereInput
@@ -4663,6 +4715,23 @@ export namespace Prisma {
     deleted_at?: SortOrder
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type RequestCreateNestedManyWithoutUserInput = {
     create?: XOR<RequestCreateWithoutUserInput, RequestUncheckedCreateWithoutUserInput> | RequestCreateWithoutUserInput[] | RequestUncheckedCreateWithoutUserInput[]
     connectOrCreate?: RequestCreateOrConnectWithoutUserInput | RequestCreateOrConnectWithoutUserInput[]
@@ -4683,6 +4752,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type RequestUpdateManyWithoutUserNestedInput = {
@@ -4775,6 +4848,10 @@ export namespace Prisma {
     connect?: RequestWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type RequestUpdateOneRequiredWithoutResponseNestedInput = {
     create?: XOR<RequestCreateWithoutResponseInput, RequestUncheckedCreateWithoutResponseInput>
     connectOrCreate?: RequestCreateOrConnectWithoutResponseInput
@@ -4806,6 +4883,17 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4850,13 +4938,69 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type RequestCreateWithoutUserInput = {
     id: string
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     Response?: ResponseCreateNestedManyWithoutRequestInput
   }
 
@@ -4865,8 +5009,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     Response?: ResponseUncheckedCreateNestedManyWithoutRequestInput
   }
 
@@ -4904,8 +5048,8 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     price?: StringFilter<"Request"> | string
     created_at?: DateTimeFilter<"Request"> | Date | string
-    updated_at?: DateTimeFilter<"Request"> | Date | string
-    deleted_at?: DateTimeFilter<"Request"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Request"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Request"> | Date | string | null
   }
 
   export type UserCreateWithoutRequestInput = {
@@ -4914,8 +5058,8 @@ export namespace Prisma {
     password: string
     roles?: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type UserUncheckedCreateWithoutRequestInput = {
@@ -4924,8 +5068,8 @@ export namespace Prisma {
     password: string
     roles?: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type UserCreateOrConnectWithoutRequestInput = {
@@ -4935,22 +5079,22 @@ export namespace Prisma {
 
   export type ResponseCreateWithoutRequestInput = {
     id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type ResponseUncheckedCreateWithoutRequestInput = {
     id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type ResponseCreateOrConnectWithoutRequestInput = {
@@ -4979,8 +5123,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateWithoutRequestInput = {
@@ -4989,8 +5133,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     roles?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseUpsertWithWhereUniqueWithoutRequestInput = {
@@ -5015,12 +5159,12 @@ export namespace Prisma {
     NOT?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
     id?: StringFilter<"Response"> | string
     request_id?: StringFilter<"Response"> | string
-    respondent_id?: StringFilter<"Response"> | string
+    respondent_id?: StringNullableFilter<"Response"> | string | null
     confirmed?: StringFilter<"Response"> | string
-    observation?: StringFilter<"Response"> | string
+    observation?: StringNullableFilter<"Response"> | string | null
     created_at?: DateTimeFilter<"Response"> | Date | string
-    updated_at?: DateTimeFilter<"Response"> | Date | string
-    deleted_at?: DateTimeFilter<"Response"> | Date | string
+    updated_at?: DateTimeNullableFilter<"Response"> | Date | string | null
+    deleted_at?: DateTimeNullableFilter<"Response"> | Date | string | null
   }
 
   export type RequestCreateWithoutResponseInput = {
@@ -5028,8 +5172,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
     user: UserCreateNestedOneWithoutRequestInput
   }
 
@@ -5039,8 +5183,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type RequestCreateOrConnectWithoutResponseInput = {
@@ -5064,8 +5208,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRequestNestedInput
   }
 
@@ -5075,8 +5219,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type RequestCreateManyUserInput = {
@@ -5084,8 +5228,8 @@ export namespace Prisma {
     description: string
     price: string
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type RequestUpdateWithoutUserInput = {
@@ -5093,8 +5237,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Response?: ResponseUpdateManyWithoutRequestNestedInput
   }
 
@@ -5103,8 +5247,8 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     Response?: ResponseUncheckedUpdateManyWithoutRequestNestedInput
   }
 
@@ -5113,48 +5257,48 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseCreateManyRequestInput = {
     id: string
-    respondent_id: string
-    confirmed: string
-    observation: string
+    respondent_id?: string | null
+    confirmed?: string
+    observation?: string | null
     created_at?: Date | string
-    updated_at: Date | string
-    deleted_at: Date | string
+    updated_at?: Date | string | null
+    deleted_at?: Date | string | null
   }
 
   export type ResponseUpdateWithoutRequestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseUncheckedUpdateWithoutRequestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ResponseUncheckedUpdateManyWithoutRequestInput = {
     id?: StringFieldUpdateOperationsInput | string
-    respondent_id?: StringFieldUpdateOperationsInput | string
+    respondent_id?: NullableStringFieldUpdateOperationsInput | string | null
     confirmed?: StringFieldUpdateOperationsInput | string
-    observation?: StringFieldUpdateOperationsInput | string
+    observation?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

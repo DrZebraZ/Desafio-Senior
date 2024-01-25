@@ -8,8 +8,8 @@ import { UserRepository } from "../user.repository.model";
 export class UserCreateCase{
   constructor(private repository: UserRepository){}
 
-  async execute({name, email, address, cep, password, phoneNumber}: createUserBodyType, resultValidation: ResultValidation):Promise<void>{
-    await this.repository.findByEmail(email, resultValidation)
+  async execute({username, password}: createUserBodyType, resultValidation: ResultValidation):Promise<void>{
+    await this.repository.findByUsername(username, resultValidation)
     if (resultValidation.hasError()){
       return
     }
@@ -23,12 +23,9 @@ export class UserCreateCase{
 
     const createBodySchema = insertUserDatabaseBody.parse({
       id: randomUUID(),
-      name,
-      email,
-      address,
-      cep,
+      username,
       password: passwordHashed,
-      phoneNumber
+      created_at: new Date()
     })
     
     await this.repository.create(createBodySchema, resultValidation)

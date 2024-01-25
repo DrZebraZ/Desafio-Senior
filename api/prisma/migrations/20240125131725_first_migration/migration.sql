@@ -9,8 +9,8 @@ CREATE TABLE [desafio].[User] (
     [password] NVARCHAR(1000) NOT NULL,
     [roles] NVARCHAR(1000) NOT NULL CONSTRAINT [User_roles_df] DEFAULT 'user',
     [created_at] DATETIME2 NOT NULL CONSTRAINT [User_created_at_df] DEFAULT CURRENT_TIMESTAMP,
-    [updated_at] DATETIME2 NOT NULL,
-    [deleted_at] DATETIME2 NOT NULL,
+    [updated_at] DATETIME2,
+    [deleted_at] DATETIME2,
     CONSTRAINT [User_pkey] PRIMARY KEY CLUSTERED ([id]),
     CONSTRAINT [User_id_key] UNIQUE NONCLUSTERED ([id]),
     CONSTRAINT [User_username_key] UNIQUE NONCLUSTERED ([username])
@@ -23,8 +23,8 @@ CREATE TABLE [desafio].[Request] (
     [description] NVARCHAR(1000) NOT NULL,
     [price] NVARCHAR(1000) NOT NULL,
     [created_at] DATETIME2 NOT NULL CONSTRAINT [Request_created_at_df] DEFAULT CURRENT_TIMESTAMP,
-    [updated_at] DATETIME2 NOT NULL,
-    [deleted_at] DATETIME2 NOT NULL,
+    [updated_at] DATETIME2,
+    [deleted_at] DATETIME2,
     CONSTRAINT [Request_pkey] PRIMARY KEY CLUSTERED ([id]),
     CONSTRAINT [Request_id_key] UNIQUE NONCLUSTERED ([id])
 );
@@ -33,12 +33,12 @@ CREATE TABLE [desafio].[Request] (
 CREATE TABLE [desafio].[Response] (
     [id] NVARCHAR(1000) NOT NULL,
     [request_id] NVARCHAR(1000) NOT NULL,
-    [respondent_id] NVARCHAR(1000) NOT NULL,
-    [confirmed] NVARCHAR(1000) NOT NULL,
-    [observation] NVARCHAR(1000) NOT NULL,
+    [respondent_id] NVARCHAR(1000),
+    [confirmed] NVARCHAR(1000) NOT NULL CONSTRAINT [Response_confirmed_df] DEFAULT 'awaiting',
+    [observation] NVARCHAR(1000),
     [created_at] DATETIME2 NOT NULL CONSTRAINT [Response_created_at_df] DEFAULT CURRENT_TIMESTAMP,
-    [updated_at] DATETIME2 NOT NULL,
-    [deleted_at] DATETIME2 NOT NULL,
+    [updated_at] DATETIME2,
+    [deleted_at] DATETIME2,
     CONSTRAINT [Response_pkey] PRIMARY KEY CLUSTERED ([id]),
     CONSTRAINT [Response_id_key] UNIQUE NONCLUSTERED ([id])
 );

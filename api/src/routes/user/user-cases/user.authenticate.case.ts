@@ -12,8 +12,8 @@ import _env from '../../../env/index';
 export class UserAuthenticateCase {
   constructor(private repository: UserRepository){}
 
-  async execute({email, password}:loginUserBodyType, resultValidation:ResultValidation):Promise<void>{ 
-    await this.repository.findByEmail(email, resultValidation)
+  async execute({username, password}:loginUserBodyType, resultValidation:ResultValidation):Promise<void>{ 
+    await this.repository.findByUsername(username, resultValidation)
     if(resultValidation.hasError()){
       return
     }

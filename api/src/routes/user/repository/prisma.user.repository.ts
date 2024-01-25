@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@/prisma/generated/client'
 import { UserRepository } from '../user.repository.model';
 import { ResultValidation } from '@/utils/result-validation';
 import { prisma } from '@/db/prisma';
@@ -6,11 +6,11 @@ import { ERROR_TYPES } from '@/errors/ErrorTypes';
 
 export class PrismaUserRepository implements UserRepository{
 
-  async findByEmail(email: string, resultValidation: ResultValidation): Promise<void> {
+  async findByUsername(username: string, resultValidation: ResultValidation): Promise<void> {
     try{
       await prisma.user.findUnique(
         {where:{
-          email
+          username
         }}
       ).then(result => {
         result != null ? resultValidation.setResult({data: result}): "" ;
