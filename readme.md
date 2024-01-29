@@ -9,7 +9,7 @@ Administrador: responsável por consultar as solicitações e qual seu estado at
 
 # Setup do sistema
 
-<h3>Entre na pasta que deseja utilizar para o sistema e:
+<h3>Entre na pasta que deseja utilizar para o sistema e: <h3>
 
 ```git clone https://github.com/DrZebraZ/Desafio-Senior.git```
 
