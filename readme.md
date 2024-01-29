@@ -17,27 +17,27 @@ Administrador: responsável por consultar as solicitações e qual seu estado at
 
 <h3>Backend:</h3>
 
-1 - subir banco
+1 - subir banco <br>
 ```docker-compose up -d```
-
-2 - instalar pacotes
+<br>
+2 - instalar pacotes <br>
 ```cd api && npm i```
-
-3 - copiar environment
+<br>
+3 - copiar environment<br>
 ```cp .env.example .env ```
-
+<br>
 4 - editar as variáveis do .env
 - DATABASE_URL = URL para acesso ao banco de dados (ja configurado)
 - ADM_USERNAME = usuario admin criado ao iniciar o servidor
 - ADM_PASSWORD = senha do admin
 - JWTKEY = chave para criação dos tokens JWT
-
-5 - rodar migrations
+<br>
+5 - rodar migrations<br>
 ```npx prisma migrate dev -n db```
-
-6 - rodar servidor backend
+<br>
+6 - rodar servidor backend<br>
 ```npm run start:dev```
-
+<br>
 Agora o servidor está rodando, com o administrador criado (apenas com seu token é possivel criar novos usuários)
 
 <h3>FrontEnd:</h3>
@@ -46,29 +46,29 @@ Abra um novo terminal para rodar o FrontEnd agora
 
 Navegue até a pasta app-desafio
 
-1 - instalar pacotes
+1 - instalar pacotes<br>
 ``` npm install ```
-
-2 - rodar Angular
+<br>
+2 - rodar Angular<br>
 ``` ng serve```
-
+<br>
 
 
 # Sobre o Sistema
 
-O Frontend estará rodando em <a>http://localhost:4200</a>
-O Backend estará rodando na porta 3000
+O Frontend estará rodando em <a>http://localhost:4200</a><br>
+O Backend estará rodando na porta 3000<br>
 
 Para logar inicialmente no sistema basta colocar os dados de ADM_USERNAME e ADM_PASSWORD informados no .env do backend
 
-O sistema consta com 4 rotas principais
-<a>http://localhost:4200/login</a>  - todos podem usar
-<a>http://localhost:4200/solicitar</a> - apenas usuarios solicitante e admin
-<a>http://localhost:4200/almox</a> - apenas usuarios almoxarife e admin
-<a>http://localhost:4200/admin</a> - apenas admin
+O sistema consta com 4 rotas principais<br>
+<a>http://localhost:4200/login</a>  - todos podem usar<br>
+<a>http://localhost:4200/solicitar</a> - apenas usuarios solicitante e admin<br>
+<a>http://localhost:4200/almox</a> - apenas usuarios almoxarife e admin<br>
+<a>http://localhost:4200/admin</a> - apenas admin<br>
 
-Ao logar com cada tipo de conta será redirecionado para sua respectiva rota automaticamente.
-Na rota /admin é possivel criar novos usuarios informando seu nome, senha e qual seu cargo (role)
+Ao logar com cada tipo de conta será redirecionado para sua respectiva rota automaticamente.<br>
+Na rota /admin é possivel criar novos usuarios informando seu nome, senha e qual seu cargo (role)<br>
 
 No almoxarife para aprovar ou recusar uma solicitação basta clicar em cima da solicitação e continuar o fluxo normalmente.
 
