@@ -68,7 +68,7 @@ O Backend estará rodando na porta 3000
 
 Para logar inicialmente no sistema basta colocar os dados de ADM_USERNAME e ADM_PASSWORD informados no .env do backend
 
-O sistema consta com 4 rotas principais
+O sistema consta com 4 rotas principais <br>
 <a>http://localhost:4200/login</a>  - todos podem usar <br>
 <a>http://localhost:4200/solicitar</a> - apenas usuarios solicitante e admin <br>
 <a>http://localhost:4200/almox</a> - apenas usuarios almoxarife e admin <br>
