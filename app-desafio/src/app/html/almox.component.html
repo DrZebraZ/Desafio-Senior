@@ -1,0 +1,15 @@
+<div class="container">
+  <h3>Pendentes</h3>
+  <button (click)="getData()">Atualizar Lista</button>
+  <ul class="lista-itens">
+    <li *ngFor="let item of data; let i = index">
+      <div class="item-container" (click)="selecionar(item.id, $event)">
+        <div class="item-info">
+          <div class="item-name">{{item.name}}</div>
+          <div class="item-price">{{item.price}}</div>
+        </div>
+        <div class="item-description">{{item.description}}</div>
+      </div>
+    </li>
+  </ul>
+</div>

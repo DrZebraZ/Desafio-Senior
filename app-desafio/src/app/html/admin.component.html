@@ -1,0 +1,89 @@
+<div class="container">
+  <h3>Vendas</h3>
+  <form (submit)="buscarFiltros($event)" class="form-container">
+    <b>FILTROS</b>
+    <div class="filtros">
+      <div class="filtro">
+        <label for="">Nome</label>
+        <input type="text" [value]="nameFilter" (input)="handleNameFilterChange($event)">
+      </div>
+      <div class="filtro">
+        <label for="">Descrição</label>
+        <input type="text" [value]="descFilter" (input)="handleDescFilterChange($event)">
+      </div>
+    </div>
+    <label for="">Status</label>
+    <div class="filtro-status">
+      <div class="radioCheck">
+        <input type="radio" id="opcao1" name="status" value="awaiting" (input)="handleChangeRadioStatus($event)">
+        <label for="opcao1">Awaiting</label>
+      </div>
+      <div class="radioCheck">
+        <input type="radio" id="opcao2" name="status" value="confirmed" (input)="handleChangeRadioStatus($event)">
+        <label for="opcao2">Confirmed</label>
+      </div>
+      <div class="radioCheck">
+        <input type="radio" id="opcao3" name="status" value="refused" (input)="handleChangeRadioStatus($event)">
+        <label for="opcao3">Refused</label>
+      </div>
+      <div class="radioCheck">
+        <input type="radio" id="opcao4" name="status" value="" (input)="handleChangeRadioStatus($event)">
+        <label for="opcao1">ALL</label>
+      </div>
+    </div>
+    <div>
+      <button type="submit">Buscar</button>
+    </div>
+  </form>
+  <ul class="lista-itens">
+    <li *ngFor="let item of data; let i = index">
+      <div class="item-container">
+        <div class="item-info">
+          <div class="item-name">Requester: {{item.User.username}}</div>
+          <div class="item-name">Status: {{item.Response.status}}</div>
+        </div>
+        <div class="item-info">
+          <div class="item-name">Nome: {{item.name}}</div>
+          <div class="item-price">Valor: {{item.price}}</div>
+        </div>
+        <div class="item-description">Descrição: {{item.description}}</div>
+        <div class="item-info">
+        </div>
+        <div class="item-description">Observações: {{item.Response.observation}}</div>
+      </div>
+    </li>
+  </ul>
+  <button (click)="getData()">Atualizar Lista</button>
+</div>
+<div class="container mt-2">
+  <h3>ADD User</h3>
+  <form class="form-container" (submit)="addUser($event)">
+    <div>
+      <div class="form-group">
+        <label for="username">Nome</label>
+        <input type="text" id="username" minlength="5" name="username" (input)="handleUsernameChange($event)" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="text" minlength="8" id="password" name="password" (input)="handlePasswordChange($event)" required>
+      </div>
+      <div class="radioContainer">
+        <div class="radioCheck">
+          <input type="radio" id="opt1" name="role" value="requester" (input)="handleChangeRadio($event)">
+          <label for="opt1">Requester</label>
+        </div>
+        <div class="radioCheck">
+          <input type="radio" id="opt2" name="role" value="storekeeper" (input)="handleChangeRadio($event)">
+          <label for="opt2">Almoxarife</label>
+        </div>
+        <div class="radioCheck">
+          <input type="radio" id="opt3" name="role" value="admin" (input)="handleChangeRadio($event)">
+          <label for="opt3">Admin</label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit">Enviar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h3>Pedido: {{itemId}}</h3>
+  <form class="form-container" (submit)="onSubmit($event)">
+    <app-form class="form-container" [isDisabled]="true" [name]="itemData?.name" [desc]="itemData?.description" [price]="itemData?.price" ></app-form>
+    <div class="radioContainer">
+      <div class="radioCheck">
+        <input type="radio" id="opcao1" name="opcao" value="confirmed" (input)="handleChangeRadio($event)">
+        <label for="opcao1">Aprovar</label>
+      </div>
+      <div class="radioCheck">
+        <input type="radio" id="opcao2" name="opcao" value="refused" (input)="handleChangeRadio($event)">
+        <label for="opcao2">Reprovar</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label [hidden]="disabled">Observação:</label>
+      <textarea [hidden]="disabled" minlength="3" rows="4" [value]="observation" (input)="handleChangeObservation($event)" [required]="!disabled"></textarea>
+  </div>
+    <div>
+      <button type="submit">Enviar</button>
+    </div>
+  </form>
+</div>

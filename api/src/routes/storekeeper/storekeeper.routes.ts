@@ -42,6 +42,25 @@ export async function StorekeeperRoutes(app: FastifyInstance){
     applyResult(resultValidation, res, 200);
   });
 
+
+  app.get('/getRequests/:request_id', {onRequest:RequireStorekeeper.bind(app)}, 
+  async (req:FastifyRequest<{Params:{request_id:string}}>, res:FastifyReply) => {
+    const resultValidation = new ResultValidation();
+    try{
+      await prisma.request.findFirst({
+        where:{
+          id: req.params.request_id
+        }
+      }).then(result => 
+        result != null ? resultValidation.setResult({data:result}): resultValidation.addError(ERROR_TYPES.user.CREATE_USER_ERROR.TAG, ERROR_TYPES.user.CREATE_USER_ERROR.MESSAGE)
+      )
+    }catch(err){
+      resultValidation.addError(ERROR_TYPES.database.INSERT_ERROR.TAG, ERROR_TYPES.database.INSERT_ERROR.MESSAGE, true, err)
+    }
+    applyResult(resultValidation, res, 200);
+  })
+
+
   app.patch('/updateRequest/:request_id', {onRequest:RequireStorekeeper.bind(app), schema:{body:$ref('makeResponse')}},
   async (req:FastifyRequest<{Body:makeResponseType, user:JWTBodyType, Params:{request_id:string}}>, res:FastifyReply) => {
     const resultValidation = new ResultValidation();

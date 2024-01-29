@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Login</h2>
+  <form (submit)="makeLogin($event)">
+    <div class="form-group">
+      <label for="username">Nome</label>
+      <input type="text" id="username" name="username" (input)="handleUsernameChange($event)" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input type="password" minlength="8" id="password" name="password" (input)="handlePasswordChange($event)" required>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>

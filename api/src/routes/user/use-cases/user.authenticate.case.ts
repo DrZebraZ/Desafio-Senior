@@ -42,7 +42,7 @@ export class UserAuthenticateCase {
       _env.JWTKEY,
       {expiresIn: 1*60*60*24} //1d
     )
-    resultValidation.setResult({data:{AuthToken:token}})
+    resultValidation.setResult({data:{AuthToken:token, User:tokenFormatter}})
   }
 
   private _GENERIC_LOGIN_ERROR(resultValidation: ResultValidation){

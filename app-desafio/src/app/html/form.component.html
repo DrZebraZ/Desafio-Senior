@@ -1,0 +1,17 @@
+<form (submit)="enviarForm($event)">
+    <div class="form-group">
+        <label>Nome:</label>
+        <input [disabled]="isDisabled" minlength="3" type="text" [value]="name" (input)="handleNameChange($event)" required>
+    </div>
+    <div class="form-group">
+        <label>Descrição:</label>
+        <textarea [disabled]="isDisabled" minlength="3" rows="4" [value]="desc" (input)="handleDescChange($event)" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="preco">Preço:</label>
+        <input [disabled]="isDisabled" type="text" format="currency" precision="2" [value]="price" (input)="formatarPreco($event)">
+    </div>
+    <div>
+        <button [hidden]="isDisabled" type="submit">Enviar</button>
+    </div>
+</form> 
